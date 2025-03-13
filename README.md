@@ -26,7 +26,7 @@ yc-zip -i <input_path>
 yc-zip -i <input_path> -o <output_directory>
 
 # Use dynamic filename template
-yc-zip -i <input_path> -n "backup-${date}-${hash}.zip"
+yc-zip -i <input_path> -n "backup-${YYYYMMDDHHmmss}-${hash}.zip"
 ```
 
 ### Command Options
@@ -39,13 +39,38 @@ yc-zip -i <input_path> -n "backup-${date}-${hash}.zip"
 
 The `--name` option supports the following placeholders:
 
-- `${date}`: Current date in YYYY-MM-DD format
-- `${hash}`: Random 8-character hash
+- `${YYYY}`: Year (e.g., 2024)
+- `${MM}`: Month (01-12)
+- `${DD}`: Day (01-31)
+- `${HH}`: Hour in 24-hour format (00-23)
+- `${mm}`: Minutes (00-59)
+- `${ss}`: Seconds (00-59)
+- `${hash(n)}`: Random n-length hexadecimal hash (0-9, A-F)
 
-Example:
+Examples:
 ```bash
-yc-zip -i ./docs -n "docs-${date}-${hash}.zip"
-# Output: docs-2023-07-15-a1b2c3d4.zip
+# Basic date format
+yc-zip -i ./docs -n "docs-${YYYYMMDD}.zip"
+# Output: docs-20240115.zip
+
+# Date with time
+yc-zip -i ./docs -n "docs-${YYYY}${MM}${DD}-${HH}${mm}.zip"
+# Output: docs-20240115-1045.zip
+
+# With custom length hash
+yc-zip -i ./docs -n "docs-${YYYYMMDD}-${hash(4)}.zip"
+# Output: docs-20240115-A12F.zip
+```
+
+```powershell
+# Basic date format
+yc-zip -i ./docs -n 'docs-${YYYYMMDD}.zip'
+
+# Date with time
+yc-zip -i ./docs -n 'docs-${YYYY}${MM}${DD}-${HH}${mm}.zip'
+
+# With custom length hash
+yc-zip -i ./docs -n 'docs-${YYYYMMDD}-${hash(4)}.zip'
 ```
 
 ## Development
