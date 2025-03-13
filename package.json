@@ -1,6 +1,6 @@
 {
   "name": "yc-zip",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "author": "YC",
   "license": "MIT",
   "description": "A command-line tool for zipping files and folders",
