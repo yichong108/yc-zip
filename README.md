@@ -48,6 +48,8 @@ The `--name` option supports the following placeholders:
 - `${hash(n)}`: Random n-length hexadecimal hash (0-9, A-F)
 
 Examples:
+
+bash
 ```bash
 # Basic date format
 yc-zip -i ./docs -n "docs-${YYYYMMDD}.zip"
@@ -62,6 +64,7 @@ yc-zip -i ./docs -n "docs-${YYYYMMDD}-${hash(4)}.zip"
 # Output: docs-20240115-A12F.zip
 ```
 
+powershell
 ```powershell
 # Basic date format
 yc-zip -i ./docs -n 'docs-${YYYYMMDD}.zip'
@@ -71,25 +74,6 @@ yc-zip -i ./docs -n 'docs-${YYYY}${MM}${DD}-${HH}${mm}.zip'
 
 # With custom length hash
 yc-zip -i ./docs -n 'docs-${YYYYMMDD}-${hash(4)}.zip'
-```
-
-## Development
-
-```bash
-# Install dependencies
-npm install
-
-# Build the project
-npm run build
-
-# Run tests
-npm test
-
-# Run linting
-npm run lint
-
-# Format code
-npm run format
 ```
 
 ## License
