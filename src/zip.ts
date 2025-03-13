@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import archiver from 'archiver';
+import chalk from 'chalk';
 
 /**
  * Creates a zip file from the specified input path
@@ -29,17 +30,20 @@ export async function createZip(inputPath: string, outputPath: string): Promise<
 
     // Handle errors
     archive.on('error', (err) => {
+      console.error(chalk.red('[yc-zip] Archive error:'), err);
       reject(err);
     });
 
-    // Pipe archive data to the file
-    archive.pipe(output);
-
     // Check if input path exists
     if (!fs.existsSync(inputPath)) {
-      reject(new Error(`Input path does not exist: ${inputPath}`));
+      const error = new Error(`Input path does not exist: ${inputPath}`);
+      console.error(chalk.red('[yc-zip] Path error:'), error.message);
+      reject(error);
       return;
     }
+
+    // Pipe archive data to the file
+    archive.pipe(output);
 
     // Get stats about the input path
     const stats = fs.statSync(inputPath);

@@ -20,6 +20,7 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
+    "test:smoke": "vite build && npm link && node bin/yc-zip.js -i dist -n dist_${YYYYMMDDHHmm}.zip",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts",
@@ -33,6 +34,7 @@
   ],
   "dependencies": {
     "archiver": "^7.0.1",
+    "chalk": "^4.1.2",
     "commander": "^13.1.0",
     "dayjs": "^1.11.13",
     "nanoid": "^5.1.3"
