@@ -92,14 +92,6 @@ npm run lint
 npm run format
 ```
 
-## Documentation
-
-For detailed documentation, run:
-
-```bash
-npm run docs:dev
-```
-
 ## License
 
 MIT

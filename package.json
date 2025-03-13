@@ -1,7 +1,12 @@
 {
   "name": "yc-zip",
   "version": "2.0.0",
+  "author": "YC",
+  "license": "MIT",
   "description": "A command-line tool for zipping files and folders",
+  "repository": {
+    "url": "https://github.com/yichong108/yc-zip"
+  },
   "main": "dist/yc-zip.umd.js",
   "module": "dist/yc-zip.mjs",
   "types": "dist/index.d.ts",
@@ -18,10 +23,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "lint": "eslint . --ext .ts",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "keywords": [
     "zip",
@@ -29,8 +31,6 @@
     "cli",
     "archive"
   ],
-  "author": "YC",
-  "license": "MIT",
   "dependencies": {
     "archiver": "^7.0.1",
     "commander": "^13.1.0",
